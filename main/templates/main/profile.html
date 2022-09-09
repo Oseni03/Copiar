@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+<br />
+<legend>
+  <h1>{{ request.user.user }} Profile</h1>
+</legend>
+<hr />
+<br />
+{% if projects %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th colspan="2">Title</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for proj in projects %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <th colspan="2">{{ proj.title }}</th>
+      <th>
+          <a href="{{proj.filepath.url}}" class="btn btn-primary">Download</a>
+      </th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No saved websites/webpage</p>
+{% endif %} 
+{% endblock %}

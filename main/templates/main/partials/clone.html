@@ -1,0 +1,26 @@
+{% load crispy_forms_tags %}
+{% load django_htmx %}
+
+    <br>
+    <legend>
+        <h1>Clone Webpage/Website with ease</h1>
+    </legend>
+    <hr>
+    <br>
+    <form 
+        hx-post="{% url "main:home" %}" 
+        hx-target="#outcome" 
+        hx-swap="innerHTML" 
+        hx-indicator="#indicator"
+    >
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+    <br>
+    <div id="outcome" class="text-center"></div>
+    
+    <div class="spinner-grow htmx-indicator" role="status" id="indicator">
+      <span class="visually-hidden">Loading...</span>
+    </div>

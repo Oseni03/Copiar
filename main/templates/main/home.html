@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    {% include "main/partials/clone.html" %}
+{% else %}
+    {% include "main/partials/landing_page.html" %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+{% load django_htmx %}
+{% load crispy_forms_tags %}
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>
+      {% block title %}Copiar {% endblock %}
+    </title>
+    <style>
+        .htmx-indicator{
+            display:none;
+        }
+        .htmx-request .my-indicator{
+            display:inline;
+        }
+        .htmx-request.my-indicator{
+            display:inline;
+        }
+    </style>
+  </head>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <!-- As a heading -->
+    {% include "nav.html" %}
+    
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'htmx/htmx.min.js' %}"></script>
+    <script src="{% static 'htmx/django-htmx.js' %}"></script>
+    <script src="{% static 'htmx/hyperscript.js' %}"></script>
+  </body>
+</html>
