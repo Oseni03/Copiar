@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get("COPIAR_SECRET_KEY")
 
 # DEBUG = (os.environ.get("DEBUG_VALUE") == "True")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", ""]
 
